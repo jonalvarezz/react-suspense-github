@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Input from 'antd/lib/input';
 import Icon from 'antd/lib/icon';
+
+const Form = styled.form`
+  width: 95%;
+  margin: 0 auto;
+  max-width: 500px;
+  .SearchInput {
+    height: 50px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+`;
 
 const propTypes = {
   onSearch: PropTypes.func
@@ -18,7 +30,7 @@ function SearchInput({ onSearch }) {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit}>
       <Input
         size="large"
         value={value}
@@ -27,20 +39,7 @@ function SearchInput({ onSearch }) {
         prefix={<Icon type="github" style={{ color: 'rgba(0,0,0,.25)' }} />}
         className="SearchInput"
       />
-
-      <style jsx>{`
-        form {
-          width: 95%;
-          margin: 0 auto;
-          max-width: 500px;
-        }
-        form :global(.SearchInput) {
-          height: 50px;
-          border-radius: 4px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-      `}</style>
-    </form>
+    </Form>
   );
 }
 SearchInput.propTypes = propTypes;
