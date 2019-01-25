@@ -11,14 +11,22 @@ const H1 = styled.h1`
   text-align: center;
 `;
 
+const Container = styled.main`
+  width: 95%;
+  max-width: 600px;
+  margin: 2rem auto;
+`;
+
 function App() {
   return (
     <Router>
       <div>
         <H1>GitHub Explorer</H1>
         <Search onSearch={console.log} />
-        <Route exact path="/" render={() => <Repositories list={data} />} />
-        <Route path="/r/:owner/:repo" component={DetailPage} />
+        <Container>
+          <Route exact path="/" render={() => <Repositories list={data} />} />
+          <Route path="/r/:owner/:repo" component={DetailPage} />
+        </Container>
       </div>
     </Router>
   );

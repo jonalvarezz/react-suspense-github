@@ -5,10 +5,8 @@ import ThemeContext from '../theme/ThemeContext';
 import { RepositoryType } from '../types';
 import Repository from './RepositoryItem';
 
-const Container = styled.ul`
-  width: 95%;
-  max-width: 600px;
-  margin: 2rem auto;
+const List = styled.ul`
+  margin: 0;
   list-style: none;
   padding: 0;
 `;
@@ -29,11 +27,11 @@ function RepositoryList({ list }) {
   const theme = useContext(ThemeContext);
 
   return (
-    <Container>
+    <List>
       {list.map(item => (
         <Repository key={item.id} {...getItemProps(item)} theme={theme} />
       ))}
-    </Container>
+    </List>
   );
 }
 RepositoryList.propTypes = props;
