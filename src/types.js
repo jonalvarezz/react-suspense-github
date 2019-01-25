@@ -4,6 +4,7 @@ export const RepositoryType = {
   id: PropTypes.number,
   name: PropTypes.string,
   description: PropTypes.string,
+  full_name: PropTypes.string,
   forks: PropTypes.number,
   watchers_count: PropTypes.number,
   stargazers_count: PropTypes.number,
