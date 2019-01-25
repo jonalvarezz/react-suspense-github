@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ThemeContext from '../theme/ThemeContext';
 import { RepositoryType } from '../types';
 import Repository from './RepositoryItem';
+import data from '../mock/data';
 
 const List = styled.ul`
   margin: 0;
@@ -11,9 +12,7 @@ const List = styled.ul`
   padding: 0;
 `;
 
-const props = {
-  list: PropTypes.arrayOf(PropTypes.object)
-};
+const props = {};
 
 const repositoryTypeKeys = Object.keys(RepositoryType);
 
@@ -23,8 +22,16 @@ const getItemProps = allProps =>
     return acc;
   }, {});
 
-function RepositoryList({ list }) {
+function RepositoryList() {
   const theme = useContext(ThemeContext);
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    window.setTimeout(() => {
+      console.log('data is set');
+      setList(data);
+    }, 2000);
+  }, []);
 
   return (
     <List>
