@@ -26,7 +26,7 @@ function App() {
         <Container>
           <Suspense maxDuration={1000} fallback={<div>Loading...</div>}>
             <Switch>
-              <Route exact path="/" component={Repositories} />
+              <Route exact path="/r/:owner" component={Repositories} />
               <Route path="/r/:owner/:repo" component={DetailPage} />
             </Switch>
           </Suspense>
