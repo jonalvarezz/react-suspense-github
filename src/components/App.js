@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Search from '../components/SearchInput';
 import ErrorBoundary from './ErrorBoundary';
+import Footer from './Footer';
 import Page404 from './Page404';
 
 const Repositories = lazy(() => import('../components/RepositoryList'));
@@ -16,7 +17,7 @@ const H1 = styled.h1`
 const Container = styled.main`
   width: 95%;
   max-width: 600px;
-  margin: 2rem auto;
+  margin: 2rem auto 6rem;
 `;
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
               </Switch>
             </Suspense>
           </Container>
+          <Footer />
         </React.Fragment>
       </ErrorBoundary>
     </Router>
