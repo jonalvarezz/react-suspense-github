@@ -26,7 +26,9 @@ function SearchInput({ onSearch }) {
 
   const onSubmit = event => {
     event.preventDefault();
-    onSearch(`/r/${value}`);
+    const target = value ? `/r/${value}` : '/';
+
+    onSearch(target);
   };
 
   return (
