@@ -1,0 +1,6 @@
+{
+  "alias": ["react-suspense-github"],
+  "github": {
+    "enabled": true
+  }
+}
