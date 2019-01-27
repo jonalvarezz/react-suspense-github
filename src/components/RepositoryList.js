@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Breadcrumb from 'antd/lib/breadcrumb';
 
+import { fetchRepositoryByOwner } from '../apis/api';
 import ThemeContext from '../theme/ThemeContext';
 import { RepositoryType } from '../types';
 import Repository from './RepositoryItem';
 import Filters from './RepositoryFilters';
-import data from '../mock/data';
 
 const repositoryTypeKeys = Object.keys(RepositoryType);
 
@@ -30,16 +30,16 @@ const propTypes = {
 };
 
 function RepositoryList({ match }) {
+  const owner = match.params.owner;
   const theme = useContext(ThemeContext);
   const [list, setList] = useState([]);
   const [sortBy, setSort] = useState('stargazers_count');
   const [filterLanguageBy, setLanguages] = useState(['JavaScript']);
 
   useEffect(() => {
-    window.setTimeout(() => {
-      console.log('data is set');
-      setList(data);
-    }, 2000);
+    fetchRepositoryByOwner(owner).then(data => {
+      if (Array.isArray(data)) setList(data);
+    });
   }, []);
 
   const sortedData = list.sort((a, b) => b[sortBy] - a[sortBy]);
@@ -51,7 +51,7 @@ function RepositoryList({ match }) {
   return (
     <List>
       <h1>Repositories</h1>
-      <RepoBreadcrumb owner={match.params.owner} />
+      <RepoBreadcrumb owner={owner} />
       <Filters onSortChange={setSort} onLanguageChange={setLanguages} />
       {filteredData.map(item => (
         <Repository key={item.id} {...getItemProps(item)} theme={theme} />
