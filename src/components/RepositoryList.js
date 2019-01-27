@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -42,11 +42,11 @@ function RepositoryList({ match }) {
     });
   }, []);
 
-  const sortedData = list.sort((a, b) => b[sortBy] - a[sortBy]);
-  const filteredData = sortedData.filter(repo => {
-    if (filterLanguageBy.length === 0) return true;
-    return filterLanguageBy.indexOf(repo.language) > -1;
-  });
+  const sortedData = useMemo(() => sortRepos(list, sortBy), [list, sortBy]);
+  const filteredData = useMemo(
+    () => filterRepos(sortedData, filterLanguageBy),
+    [sortedData, filterLanguageBy]
+  );
 
   return (
     <List>
@@ -63,6 +63,17 @@ RepositoryList.propTypes = propTypes;
 RepositoryList.defaultProps = {
   list: []
 };
+
+function sortRepos(arr, sortBy) {
+  return arr.sort((a, b) => b[sortBy] - a[sortBy]);
+}
+
+function filterRepos(arr, filterBy) {
+  return arr.filter(repo => {
+    if (filterBy.length === 0) return true;
+    return filterBy.indexOf(repo.language) > -1;
+  });
+}
 
 function RepoBreadcrumb({ owner }) {
   return (
