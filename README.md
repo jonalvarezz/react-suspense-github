@@ -1,5 +1,7 @@
 ⚛️ This is React application using the public GitHub API. You search by company name, and you will get the company available repositories. There are some filter and sort options available.
 
+[Try Online](https://react-suspense-github.now.sh/)
+
 ![alt React Suspense GitHub](./screenshot.png)
 
 ## Technical Features
