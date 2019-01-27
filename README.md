@@ -22,6 +22,20 @@
 * [ ] Use `react-cache` to _Suspend_ the API requests
 * [ ] Add a fancy animation when repository list comes up
 
+## Run it locally
+Download, install, and run.
+```
+git clone git@github.com:jonalvarezz/react-suspense-github.git
+cd react-suspense-github
+yarn && yarn dev 
+```
+
+## FAQ
+### I am not able to see the online demo.
+Since I am using the public, free and non-authenticated GitHub API, you may have reached the [rate limit](https://developer.github.com/v3/#rate-limiting). Try [running it locally](#run-it-locally) instead.
+
+Otherwise you can wait until the rate limit get reset. If you take a look to the DevTool's console you will get a hint on the remaining time.
+
 ## Available Scripts
 
 In the project directory, you can run:
