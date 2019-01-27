@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchRepoBranches } from '../apis/api';
 import PropTypes from 'prop-types';
 import Breadcrumb from 'antd/lib/breadcrumb';
 import { Link } from 'react-router-dom';
 import Branches from './Branches';
-
-import data from '../mock/branches';
 
 const propTypes = {
   // Router
@@ -13,6 +12,13 @@ const propTypes = {
 
 function RepositoryDetail({ match }) {
   const { owner, repo } = match.params;
+  const [branchList, setBranchList] = useState([]);
+
+  useEffect(() => {
+    fetchRepoBranches(owner, repo).then(data => {
+      if (Array.isArray(data)) setBranchList(data);
+    });
+  }, []);
 
   return (
     <article>
@@ -26,7 +32,7 @@ function RepositoryDetail({ match }) {
         </Breadcrumb.Item>
         <Breadcrumb.Item>{repo}</Breadcrumb.Item>
       </Breadcrumb>
-      <Branches {...match.params} list={data} />
+      <Branches {...match.params} list={branchList} />
     </article>
   );
 }

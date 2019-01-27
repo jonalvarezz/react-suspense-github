@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Breadcrumb from 'antd/lib/breadcrumb';
 
-import { fetchRepositoryByOwner } from '../apis/api';
+import { fetchReposByOwner } from '../apis/api';
 import ThemeContext from '../theme/ThemeContext';
 import { RepositoryType } from '../types';
 import Repository from './RepositoryItem';
@@ -37,7 +37,7 @@ function RepositoryList({ match }) {
   const [filterLanguageBy, setLanguages] = useState(['JavaScript']);
 
   useEffect(() => {
-    fetchRepositoryByOwner(owner).then(data => {
+    fetchReposByOwner(owner).then(data => {
       if (Array.isArray(data)) setList(data);
     });
   }, []);

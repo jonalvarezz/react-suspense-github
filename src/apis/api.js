@@ -22,7 +22,7 @@ const validateStatus = response => {
 
 const toJson = response => response.json();
 
-export function fetchRepositoryByOwner(owner) {
+export function fetchReposByOwner(owner) {
   const promise = fetch(`${apiPrefix}/orgs/${owner}/repos`, {
     headers: {
       'Content-Type': 'application/json',
@@ -38,6 +38,20 @@ export function fetchRepositoryByOwner(owner) {
 
       return response;
     })
+    .then(validateStatus)
+    .then(toJson);
+
+  return promise;
+}
+
+export function fetchRepoBranches(owner, repo) {
+  const promise = fetch(`${apiPrefix}/repos/${owner}/${repo}/branches`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/vnd.github.v3+json'
+    }
+  })
+    .then(validateRateLimit)
     .then(validateStatus)
     .then(toJson);
 
