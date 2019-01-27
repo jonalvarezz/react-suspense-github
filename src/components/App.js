@@ -21,8 +21,14 @@ function App() {
   return (
     <Router>
       <div>
-        <H1>GitHub Explorer</H1>
-        <Search onSearch={console.log} />
+        <Route
+          render={({ history }) => (
+            <div>
+              <H1>GitHub Explorer</H1>
+              <Search onSearch={history.push} />
+            </div>
+          )}
+        />
         <Container>
           <Suspense maxDuration={1000} fallback={<div>Loading...</div>}>
             <Switch>
