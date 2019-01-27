@@ -2,6 +2,26 @@
 
 ![alt React Suspense GitHub](./screenshot.png)
 
+## Technical Features
+* Styled componentes.
+* React Context to provide theming.
+* React Hooks: useState, useEffect, useMemo, useContext to manage logic.
+* React error boundaries.
+* React Router + React Suspense and Lazy to enable route based code-splitting.
+* GitHub API
+
+## UI Engineering Concepts
+* Code splitting based on routes.
+* Logic can be easily extracted, moved and shared thanks to React hooks.
+* Memoization to avoid unnecesary calculations after re renders.
+* Scoped CSS
+
+## Keep it going
+* [ ] UI Feedback for unhandled errors
+* [ ] Extract logic from `RepositoryList` to preserve state in a parent component using `useReducer` hook.
+* [ ] Use `react-cache` to _Suspend_ the API requests
+* [ ] Add a fancy animation when repository list comes up
+
 ## Available Scripts
 
 In the project directory, you can run:
