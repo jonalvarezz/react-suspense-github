@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Search from '../components/SearchInput';
 import ErrorBoundary from './ErrorBoundary';
+import Page404 from './Page404';
 
 const Repositories = lazy(() => import('../components/RepositoryList'));
 const DetailPage = lazy(() => import('../components/RepositoryDetail'));
@@ -34,8 +35,10 @@ function App() {
           <Container>
             <Suspense maxDuration={1000} fallback={<div>Loading...</div>}>
               <Switch>
+                <Route exact path="/" />
                 <Route exact path="/r/:owner" component={Repositories} />
                 <Route path="/r/:owner/:repo" component={DetailPage} />
+                <Route component={Page404} />
               </Switch>
             </Suspense>
           </Container>
