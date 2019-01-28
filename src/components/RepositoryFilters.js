@@ -36,8 +36,8 @@ const Col = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-column-template: 1fr 1fr;
-  grid-gap: 15%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
   margin: 3rem 0 1rem;
   align-items: center;
   justify-content: space-between;
@@ -46,10 +46,6 @@ const Container = styled.div`
     font-weight: bold;
     white-space: nowrap;
     padding-right: 8px;
-  }
-
-  @media (min-width: 500px) {
-    grid-template-columns: 1fr 1fr;
   }
 `;
 
@@ -65,7 +61,7 @@ function RepositoryFilters({ onSortChange, onLanguageChange }) {
         <span>Languages: </span>
         <Select
           mode="multiple"
-          style={{ width: '100%', minWidth: '180px' }}
+          style={{ width: '100%', minWidth: '100px' }}
           placeholder="Please select"
           onChange={onLanguageChange}
         >
