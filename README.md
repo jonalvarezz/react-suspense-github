@@ -5,35 +5,42 @@
 ![alt React Suspense GitHub](./screenshot.png)
 
 ## Technical Features
-* Styled componentes.
-* React Context to provide theming.
-* React Hooks: useState, useEffect, useMemo, useContext to manage logic.
-* React error boundaries.
-* React Router + React Suspense and Lazy to enable route based code-splitting.
-* GitHub API
+
+- Styled componentes.
+- React Context to provide theming.
+- React Hooks: useState, useEffect, useMemo, useContext to manage logic.
+- React error boundaries.
+- React Router + React Suspense and Lazy to enable route based code-splitting.
+- GitHub API
 
 ## UI Engineering Concepts
-* Code splitting based on routes.
-* Logic can be easily extracted, moved and shared thanks to React hooks.
-* Memoization to avoid unnecesary calculations after re renders.
-* Scoped CSS
+
+- Code splitting based on routes.
+- Logic can be easily extracted, moved and shared thanks to React hooks.
+- Memoization to avoid unnecesary calculations after re renders.
+- Scoped CSS
 
 ## Keep it going
-* [ ] UI Feedback for unhandled errors
-* [ ] Extract logic from `RepositoryList` to preserve state in a parent component using `useReducer` hook.
-* [ ] Use `react-cache` to _Suspend_ the API requests
-* [ ] Add a fancy animation when repository list comes up
+
+- [ ] UI Feedback for unhandled errors
+- [ ] Extract logic from `RepositoryList` to preserve state in a parent component using `useReducer` hook.
+- [ ] Use `react-cache` to _Suspend_ the API requests
+- [ ] Add a fancy animation when repository list comes up
 
 ## Run it locally
+
 Download, install, and run.
+
 ```
 git clone git@github.com:jonalvarezz/react-suspense-github.git
 cd react-suspense-github
-yarn && yarn dev 
+yarn && yarn start
 ```
 
 ## FAQ
+
 ### I am not able to see the online demo.
+
 Since I am using the public, free and non-authenticated GitHub API, you may have reached the [rate limit](https://developer.github.com/v3/#rate-limiting). Try [running it locally](#run-it-locally) instead.
 
 Otherwise you can wait until the rate limit get reset. If you take a look to the DevTool's console you will get a hint on the remaining time.
